@@ -1,0 +1,14 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.1.1, pluggy-1.7.0
+rootdir: C:\Users\LENOVO\Desktop\AI Foundations (MGT 409)\Final Project\venn\backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1
+collected 49 items
+
+tests\test_auth_and_isolation.py ............                            [ 24%]
+tests\test_health_and_setup.py ...........                               [ 46%]
+tests\test_profile_targets_api.py ........                               [ 63%]
+tests\test_targets.py ..................                                 [100%]
+
+============================= 49 passed in 8.03s ==============================

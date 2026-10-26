@@ -1,0 +1,52 @@
+
+ RUN  v5.0.5 <repo>/frontend
+
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats targets for reps and timed exercises 3ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats rest 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > describes planned vs actual difference 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > converts kg to lb for display 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats elapsed time 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > prefills the next set from the last set, else the suggestion 1ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > shows an all-remaining bar when nothing is eaten 4ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > splits filled and remaining when partially complete 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > treats an exact (rounded) match as met 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > rescales the bar when over target: target part filled, excess marked over 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > reports missing targets instead of inventing one 0ms
+ ✓ src/test/nutritionLogic.test.ts > previewNutrition > matches the backend formula 0ms
+ ✓ src/test/nutritionLogic.test.ts > previewNutrition > returns null for invalid quantities 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > uses the local calendar, not UTC 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > shifts days across month boundaries 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > defaults a past day's entry to that day at the current clock time 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > labels today and yesterday 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > formats quantities for the log 0ms
+ ✓ src/test/units.test.tsx > unit conversions > converts height both ways 4ms
+ ✓ src/test/units.test.tsx > unit conversions > converts weight without drifting when switching repeatedly 5ms
+ ✓ src/test/units.test.tsx > goal and protein mapping > maps user-facing goals onto the existing calculator 2ms
+ ✓ src/test/units.test.tsx > goal and protein mapping > shows protein as grams per day 1ms
+ ✓ src/test/App.test.tsx > authentication > shows the Venn sign-in page when logged out, with the demo hint 315ms
+ ✓ src/test/Training.test.tsx > training > shows history with planned vs actual and marks demo data 440ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > shows the empty state with targets and nothing logged 346ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > lists entries chronologically with totals and remaining amounts 271ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > shows over-target amounts 57ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > explains a missing target instead of inventing one 57ms
+ ✓ src/test/Training.test.tsx > training > runs the whole lifecycle: generate, review, replace, start, log in lb, finish 830ms
+ ✓ src/test/Training.test.tsx > training > explains when a workout cannot be generated 121ms
+ ✓ src/test/App.test.tsx > authentication > shows the server's error on a wrong password, then logs in 981ms
+ ✓ src/test/App.test.tsx > dashboard > shows targets and clearly marks AI as disabled without a key 100ms
+ ✓ src/test/App.test.tsx > dashboard > sends a new user to the setup questionnaire, which they can skip 207ms
+ ✓ src/test/App.test.tsx > dashboard > shows every module in the navigation 24ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > searches, picks a food, adjusts the quantity and saves it with a timestamp 1309ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > re-uses a recent food with its last quantity 132ms
+ ✓ src/test/units.test.tsx > onboarding questionnaire > asks one question per screen and saves the answers to the profile 2469ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > flags an implausible quantity and applies the suggested correction 835ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > offers search or manual entry for an unknown barcode 473ms
+ ✓ src/test/App.test.tsx > settings > switches units beside each field and saves metric values 2119ms
+ ✓ src/test/App.test.tsx > settings > maps clear goal choices onto the calculator and shows protein in grams 326ms
+ ✓ src/test/App.test.tsx > settings > shows server validation errors for profile fields 264ms
+ ✓ src/test/App.test.tsx > settings > rejects manual targets below the safety minimum with the server's reason 314ms
+
+ Test Files  6 passed (6)
+      Tests  43 passed (43)
+   Start at  01:31:21
+   Duration  7.70s (tests 43%, environment 41%, setup 8%, import 5%, transform 3%)
+

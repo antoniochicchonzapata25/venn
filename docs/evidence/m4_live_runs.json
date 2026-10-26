@@ -1,0 +1,1067 @@
+[
+ {
+  "id": 1,
+  "question": "How am I doing against my protein goal?",
+  "workflow": "nutrition",
+  "routed_by": "keywords",
+  "status": "ok",
+  "answer": "Your protein range is **156–172 g/day**. Today (Oct 26), you’ve logged **94.2 g**, which is **below range**—you need **62 g more** to reach the low end.\n\nAcross the **4 logged days** in the past week, none reached the range. Three were below it by **19–80 g**; three other days had no food logged.",
+  "error": null,
+  "model": "gpt-6-luna",
+  "model_calls": 3,
+  "tool_calls": 2,
+  "usage": {
+   "input_tokens": 2060,
+   "cached_input_tokens": 0,
+   "output_tokens": 126,
+   "reasoning_tokens": 0,
+   "complete": true
+  },
+  "estimated_cost_usd": 0.00029798,
+  "latency_ms": 6349,
+  "checks": {
+   "numbers_checked": 8,
+   "numbers_verified": 8,
+   "unverified_numbers": [],
+   "grounded": true,
+   "untrusted_text_flags": [],
+   "exercises_mentioned": [],
+   "exercise_conflicts": []
+  },
+  "tools_used": [
+   "get_nutrition_targets",
+   "get_daily_nutrition"
+  ],
+  "created_at": "2026-10-26T07:00:57.802748",
+  "price_source": "MGT 409 class slide (professor-provided reference prices, USD per 1M tokens)",
+  "trace": [
+   {
+    "step": "router",
+    "method": "keywords",
+    "workflow": "nutrition"
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 375,
+    "cached_input_tokens": 0,
+    "output_tokens": 17,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.000046,
+    "latency_ms": 2586,
+    "tool_calls_requested": [
+     "get_nutrition_targets"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_nutrition_targets",
+    "args": {},
+    "ok": true,
+    "result_keys": [
+     "note",
+     "target"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 523,
+    "cached_input_tokens": 0,
+    "output_tokens": 21,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000628,
+    "latency_ms": 1600,
+    "tool_calls_requested": [
+     "get_daily_nutrition"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_daily_nutrition",
+    "args": {
+     "days": 7
+    },
+    "ok": true,
+    "result_keys": [
+     "days",
+     "summary"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 1162,
+    "cached_input_tokens": 0,
+    "output_tokens": 88,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00018918,
+    "latency_ms": 2147,
+    "tool_calls_requested": []
+   },
+   {
+    "step": "validation",
+    "numbers_checked": 8,
+    "numbers_verified": 8,
+    "unverified_numbers": [],
+    "grounded": true,
+    "untrusted_text_flags": [],
+    "exercises_mentioned": [],
+    "exercise_conflicts": []
+   }
+  ],
+  "model_calls_detail": [
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 375,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 17,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.000046,
+    "latency_ms": 2586,
+    "created_at": "2026-10-26T07:00:57.807326"
+   },
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 523,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 21,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000628,
+    "latency_ms": 1600,
+    "created_at": "2026-10-26T07:00:57.807330"
+   },
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 1162,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 1159,
+    "output_tokens": 88,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00018918,
+    "latency_ms": 2147,
+    "created_at": "2026-10-26T07:00:57.807331"
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "question": "Which days did I fall outside my protein range?",
+  "workflow": "nutrition",
+  "routed_by": "keywords",
+  "status": "ok",
+  "answer": "You were below your protein range on every logged day:\n\n- Oct 22: 85.1 g\n- Oct 24: 76 g\n- Oct 25: 137.3 g\n- Oct 26: 94.2 g\n\nYour range is 156–172 g. Other days had no food log, so I can’t assess them.",
+  "error": null,
+  "model": "gpt-6-luna",
+  "model_calls": 2,
+  "tool_calls": 1,
+  "usage": {
+   "input_tokens": 1608,
+   "cached_input_tokens": 0,
+   "output_tokens": 101,
+   "reasoning_tokens": 0,
+   "complete": true
+  },
+  "estimated_cost_usd": 0.00024203,
+  "latency_ms": 7217,
+  "checks": {
+   "numbers_checked": 10,
+   "numbers_verified": 10,
+   "unverified_numbers": [],
+   "grounded": true,
+   "untrusted_text_flags": [],
+   "exercises_mentioned": [],
+   "exercise_conflicts": []
+  },
+  "tools_used": [
+   "get_daily_nutrition"
+  ],
+  "created_at": "2026-10-26T07:01:05.789046",
+  "price_source": "MGT 409 class slide (professor-provided reference prices, USD per 1M tokens)",
+  "trace": [
+   {
+    "step": "router",
+    "method": "keywords",
+    "workflow": "nutrition"
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 376,
+    "cached_input_tokens": 0,
+    "output_tokens": 21,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000481,
+    "latency_ms": 1381,
+    "tool_calls_requested": [
+     "get_daily_nutrition"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_daily_nutrition",
+    "args": {
+     "days": 14
+    },
+    "ok": true,
+    "result_keys": [
+     "days",
+     "summary"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 1232,
+    "cached_input_tokens": 0,
+    "output_tokens": 80,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00019393,
+    "latency_ms": 5827,
+    "tool_calls_requested": []
+   },
+   {
+    "step": "validation",
+    "numbers_checked": 10,
+    "numbers_verified": 10,
+    "unverified_numbers": [],
+    "grounded": true,
+    "untrusted_text_flags": [],
+    "exercises_mentioned": [],
+    "exercise_conflicts": []
+   }
+  ],
+  "model_calls_detail": [
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 376,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 21,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000481,
+    "latency_ms": 1381,
+    "created_at": "2026-10-26T07:01:05.797973"
+   },
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 1232,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 1229,
+    "output_tokens": 80,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00019393,
+    "latency_ms": 5827,
+    "created_at": "2026-10-26T07:01:05.797979"
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "question": "What's a good alternative to barbell squats for me?",
+  "workflow": "training",
+  "routed_by": "keywords",
+  "status": "ok",
+  "answer": "A hack squat is a good alternative: it trains the same squat pattern and quadriceps, and it passed Venn’s equipment and limitation checks. Leg press is another option, but Venn notes it loads your lower back moderately, so use a comfortable range and load—or swap it if it doesn’t feel suitable.",
+  "error": null,
+  "model": "gpt-6-luna",
+  "model_calls": 3,
+  "tool_calls": 2,
+  "usage": {
+   "input_tokens": 2183,
+   "cached_input_tokens": 0,
+   "output_tokens": 107,
+   "reasoning_tokens": 0,
+   "complete": true
+  },
+  "estimated_cost_usd": 0.0002989,
+  "latency_ms": 5346,
+  "checks": {
+   "numbers_checked": 0,
+   "numbers_verified": 0,
+   "unverified_numbers": [],
+   "grounded": true,
+   "untrusted_text_flags": [],
+   "exercises_mentioned": [
+    "Leg Press",
+    "Hack Squat"
+   ],
+   "exercise_conflicts": []
+  },
+  "tools_used": [
+   "get_training_profile",
+   "get_exercise_alternatives"
+  ],
+  "created_at": "2026-10-26T07:01:11.835143",
+  "price_source": "MGT 409 class slide (professor-provided reference prices, USD per 1M tokens)",
+  "trace": [
+   {
+    "step": "router",
+    "method": "keywords",
+    "workflow": "training"
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:training",
+    "status": "ok",
+    "input_tokens": 437,
+    "cached_input_tokens": 0,
+    "output_tokens": 15,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000512,
+    "latency_ms": 1442,
+    "tool_calls_requested": [
+     "get_training_profile"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_training_profile",
+    "args": {},
+    "ok": true,
+    "result_keys": [
+     "note",
+     "profile"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:training",
+    "status": "ok",
+    "input_tokens": 659,
+    "cached_input_tokens": 0,
+    "output_tokens": 25,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000784,
+    "latency_ms": 1520,
+    "tool_calls_requested": [
+     "get_exercise_alternatives"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_exercise_alternatives",
+    "args": {
+     "exercise": "Barbell Squat"
+    },
+    "ok": true,
+    "result_keys": [
+     "alternatives",
+     "compatible_with_user",
+     "exercise",
+     "note",
+     "notes",
+     "why_not"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:training",
+    "status": "ok",
+    "input_tokens": 1087,
+    "cached_input_tokens": 0,
+    "output_tokens": 67,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0001693,
+    "latency_ms": 2374,
+    "tool_calls_requested": []
+   },
+   {
+    "step": "validation",
+    "numbers_checked": 0,
+    "numbers_verified": 0,
+    "unverified_numbers": [],
+    "grounded": true,
+    "untrusted_text_flags": [],
+    "exercises_mentioned": [
+     "Leg Press",
+     "Hack Squat"
+    ],
+    "exercise_conflicts": []
+   }
+  ],
+  "model_calls_detail": [
+   {
+    "purpose": "agent:training",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 437,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 15,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000512,
+    "latency_ms": 1442,
+    "created_at": "2026-10-26T07:01:11.847774"
+   },
+   {
+    "purpose": "agent:training",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 659,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 25,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000784,
+    "latency_ms": 1520,
+    "created_at": "2026-10-26T07:01:11.847780"
+   },
+   {
+    "purpose": "agent:training",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 1087,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 1084,
+    "output_tokens": 67,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0001693,
+    "latency_ms": 2374,
+    "created_at": "2026-10-26T07:01:11.847782"
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "question": "Can you build me a 45 minute upper body workout?",
+  "workflow": "training",
+  "routed_by": "keywords",
+  "status": "ok",
+  "answer": "Upper Body — estimated 38 minutes, within your 45-minute limit\n\n- Barbell Bench Press — 3 sets of 6–10 reps; rest 120 seconds\n- Wide-Grip Lat Pulldown — 3 sets of 6–10 reps; rest 120 seconds\n- Seated Dumbbell Press — 3 sets of 6–10 reps; rest 120 seconds\n- Seated Cable Rows — 3 sets of 6–10 reps; rest 120 seconds\n\nIncludes a 5-minute warm-up. Seated Cable Rows load your lower back moderately; use a comfortable range and load, or swap the exercise. This preview hasn’t been saved.",
+  "error": null,
+  "model": "gpt-6-luna",
+  "model_calls": 3,
+  "tool_calls": 2,
+  "usage": {
+   "input_tokens": 2204,
+   "cached_input_tokens": 0,
+   "output_tokens": 184,
+   "reasoning_tokens": 0,
+   "complete": true
+  },
+  "estimated_cost_usd": 0.00034003,
+  "latency_ms": 30959,
+  "checks": {
+   "numbers_checked": 19,
+   "numbers_verified": 19,
+   "unverified_numbers": [],
+   "grounded": true,
+   "untrusted_text_flags": [],
+   "exercises_mentioned": [
+    "Seated Dumbbell Press",
+    "Wide-Grip Lat Pulldown",
+    "Seated Cable Rows"
+   ],
+   "exercise_conflicts": []
+  },
+  "tools_used": [
+   "get_training_profile",
+   "generate_workout_preview"
+  ],
+  "created_at": "2026-10-26T07:01:43.568073",
+  "price_source": "MGT 409 class slide (professor-provided reference prices, USD per 1M tokens)",
+  "trace": [
+   {
+    "step": "router",
+    "method": "keywords",
+    "workflow": "training"
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:training",
+    "status": "ok",
+    "input_tokens": 437,
+    "cached_input_tokens": 0,
+    "output_tokens": 15,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000512,
+    "latency_ms": 1882,
+    "tool_calls_requested": [
+     "get_training_profile"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_training_profile",
+    "args": {},
+    "ok": true,
+    "result_keys": [
+     "note",
+     "profile"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:training",
+    "status": "ok",
+    "input_tokens": 659,
+    "cached_input_tokens": 0,
+    "output_tokens": 25,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000784,
+    "latency_ms": 1559,
+    "tool_calls_requested": [
+     "generate_workout_preview"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "generate_workout_preview",
+    "args": {
+     "day_type": "upper",
+     "minutes": 45
+    },
+    "ok": true,
+    "result_keys": [
+     "estimated_minutes",
+     "exercises",
+     "explanation",
+     "generator",
+     "max_minutes",
+     "name",
+     "saved",
+     "validation"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:training",
+    "status": "ok",
+    "input_tokens": 1108,
+    "cached_input_tokens": 0,
+    "output_tokens": 144,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00021043,
+    "latency_ms": 27501,
+    "tool_calls_requested": []
+   },
+   {
+    "step": "validation",
+    "numbers_checked": 19,
+    "numbers_verified": 19,
+    "unverified_numbers": [],
+    "grounded": true,
+    "untrusted_text_flags": [],
+    "exercises_mentioned": [
+     "Seated Dumbbell Press",
+     "Wide-Grip Lat Pulldown",
+     "Seated Cable Rows"
+    ],
+    "exercise_conflicts": []
+   }
+  ],
+  "model_calls_detail": [
+   {
+    "purpose": "agent:training",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 437,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 15,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000512,
+    "latency_ms": 1882,
+    "created_at": "2026-10-26T07:01:43.576870"
+   },
+   {
+    "purpose": "agent:training",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 659,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 25,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000784,
+    "latency_ms": 1559,
+    "created_at": "2026-10-26T07:01:43.576875"
+   },
+   {
+    "purpose": "agent:training",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 1108,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 1105,
+    "output_tokens": 144,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00021043,
+    "latency_ms": 27501,
+    "created_at": "2026-10-26T07:01:43.576877"
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "question": "I've trained consistently this week, but I'm struggling to hit my protein goal. What could I change?",
+  "workflow": "progress",
+  "routed_by": "keywords",
+  "status": "ok",
+  "answer": "Observed:\n- Your protein target range is 156–172 g/day. On the 4 logged days, you averaged 98.2 g and were below range each day.\n- Chicken, salmon, and eggs are already among your logged protein sources. Your workout history shows 2 completed sessions, both marked as demo data, so it doesn’t confirm your training week.\n\nYou could try:\n- Add another serving of a protein source you already log—such as chicken, salmon, eggs, skyr, or milk—to meals or snacks.\n- Log meals consistently so the comparison reflects more of your week. Two days have no food logged, which isn’t the same as eating nothing.",
+  "error": null,
+  "model": "gpt-6-luna",
+  "model_calls": 3,
+  "tool_calls": 4,
+  "usage": {
+   "input_tokens": 3284,
+   "cached_input_tokens": 0,
+   "output_tokens": 477,
+   "reasoning_tokens": 239,
+   "complete": true
+  },
+  "estimated_cost_usd": 0.00061972,
+  "latency_ms": 11227,
+  "checks": {
+   "numbers_checked": 5,
+   "numbers_verified": 5,
+   "unverified_numbers": [],
+   "grounded": true,
+   "untrusted_text_flags": [],
+   "exercises_mentioned": [],
+   "exercise_conflicts": []
+  },
+  "tools_used": [
+   "get_progress_metrics",
+   "get_nutrition_targets",
+   "get_top_protein_foods",
+   "get_daily_nutrition"
+  ],
+  "created_at": "2026-10-26T07:01:55.764961",
+  "price_source": "MGT 409 class slide (professor-provided reference prices, USD per 1M tokens)",
+  "trace": [
+   {
+    "step": "router",
+    "method": "keywords",
+    "workflow": "progress"
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:progress",
+    "status": "ok",
+    "input_tokens": 489,
+    "cached_input_tokens": 0,
+    "output_tokens": 19,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000584,
+    "latency_ms": 1506,
+    "tool_calls_requested": [
+     "get_progress_metrics"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_progress_metrics",
+    "args": {
+     "days": 7
+    },
+    "ok": true,
+    "result_keys": [
+     "body_measurements",
+     "note",
+     "nutrition",
+     "training",
+     "window_days"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:progress",
+    "status": "ok",
+    "input_tokens": 679,
+    "cached_input_tokens": 0,
+    "output_tokens": 132,
+    "reasoning_tokens": 57,
+    "estimated_cost_usd": 0.0001339,
+    "latency_ms": 5625,
+    "tool_calls_requested": [
+     "get_nutrition_targets",
+     "get_top_protein_foods",
+     "get_daily_nutrition"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_nutrition_targets",
+    "args": {},
+    "ok": true,
+    "result_keys": [
+     "note",
+     "target"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_top_protein_foods",
+    "args": {
+     "days": 7,
+     "limit": 8
+    },
+    "ok": true,
+    "result_keys": [
+     "days",
+     "foods",
+     "note",
+     "total_protein_g"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_daily_nutrition",
+    "args": {
+     "days": 7
+    },
+    "ok": true,
+    "result_keys": [
+     "days",
+     "summary"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:progress",
+    "status": "ok",
+    "input_tokens": 2116,
+    "cached_input_tokens": 0,
+    "output_tokens": 326,
+    "reasoning_tokens": 182,
+    "estimated_cost_usd": 0.00042742,
+    "latency_ms": 4074,
+    "tool_calls_requested": []
+   },
+   {
+    "step": "validation",
+    "numbers_checked": 5,
+    "numbers_verified": 5,
+    "unverified_numbers": [],
+    "grounded": true,
+    "untrusted_text_flags": [],
+    "exercises_mentioned": [],
+    "exercise_conflicts": []
+   }
+  ],
+  "model_calls_detail": [
+   {
+    "purpose": "agent:progress",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 489,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 19,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000584,
+    "latency_ms": 1506,
+    "created_at": "2026-10-26T07:01:55.773968"
+   },
+   {
+    "purpose": "agent:progress",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 679,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 132,
+    "reasoning_tokens": 57,
+    "estimated_cost_usd": 0.0001339,
+    "latency_ms": 5625,
+    "created_at": "2026-10-26T07:01:55.773974"
+   },
+   {
+    "purpose": "agent:progress",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 2116,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 2113,
+    "output_tokens": 326,
+    "reasoning_tokens": 182,
+    "estimated_cost_usd": 0.00042742,
+    "latency_ms": 4074,
+    "created_at": "2026-10-26T07:01:55.773976"
+   }
+  ]
+ },
+ {
+  "id": 6,
+  "question": "What foods contribute most to my protein intake?",
+  "workflow": "nutrition",
+  "routed_by": "keywords",
+  "status": "ok",
+  "answer": "Over the last 7 days, your biggest protein contributors were:\n\n- Chicken breast: 164.3 g (41.8%)\n- Atlantic salmon: 70.8 g (18.0%)\n- Scrambled eggs: 30.5 g (7.8%)\n- Chocolate chip cookie dough protein bar: 21.0 g (5.3%)\n- 2% milk: 16.2 g (4.1%)",
+  "error": null,
+  "model": "gpt-6-luna",
+  "model_calls": 2,
+  "tool_calls": 1,
+  "usage": {
+   "input_tokens": 1336,
+   "cached_input_tokens": 0,
+   "output_tokens": 120,
+   "reasoning_tokens": 0,
+   "complete": true
+  },
+  "estimated_cost_usd": 0.0001936,
+  "latency_ms": 4144,
+  "checks": {
+   "numbers_checked": 12,
+   "numbers_verified": 12,
+   "unverified_numbers": [],
+   "grounded": true,
+   "untrusted_text_flags": [],
+   "exercises_mentioned": [],
+   "exercise_conflicts": []
+  },
+  "tools_used": [
+   "get_top_protein_foods"
+  ],
+  "created_at": "2026-10-26T07:02:00.680604",
+  "price_source": "MGT 409 class slide (professor-provided reference prices, USD per 1M tokens)",
+  "trace": [
+   {
+    "step": "router",
+    "method": "keywords",
+    "workflow": "nutrition"
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 375,
+    "cached_input_tokens": 0,
+    "output_tokens": 26,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000505,
+    "latency_ms": 1627,
+    "tool_calls_requested": [
+     "get_top_protein_foods"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_top_protein_foods",
+    "args": {
+     "days": 7,
+     "limit": 8
+    },
+    "ok": true,
+    "result_keys": [
+     "days",
+     "foods",
+     "note",
+     "total_protein_g"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 961,
+    "cached_input_tokens": 0,
+    "output_tokens": 94,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0001431,
+    "latency_ms": 2513,
+    "tool_calls_requested": []
+   },
+   {
+    "step": "validation",
+    "numbers_checked": 12,
+    "numbers_verified": 12,
+    "unverified_numbers": [],
+    "grounded": true,
+    "untrusted_text_flags": [],
+    "exercises_mentioned": [],
+    "exercise_conflicts": []
+   }
+  ],
+  "model_calls_detail": [
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 375,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 26,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000505,
+    "latency_ms": 1627,
+    "created_at": "2026-10-26T07:02:00.690788"
+   },
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 961,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 94,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0001431,
+    "latency_ms": 2513,
+    "created_at": "2026-10-26T07:02:00.690796"
+   }
+  ]
+ },
+ {
+  "id": 7,
+  "question": "What foods contribute most to my protein intake?",
+  "workflow": "nutrition",
+  "routed_by": "keywords",
+  "status": "ok",
+  "answer": "Over the last 7 days, your biggest protein contributors were:\n\n- Chicken breast: 164.3 g (36.3%)\n- One food entry unavailable: 72.0 g (15.9%)\n- Atlantic salmon: 70.8 g (15.6%)\n- Scrambled eggs: 30.5 g (6.7%)\n- Protein bars: 21.0 g (4.6%)",
+  "error": null,
+  "model": "gpt-6-luna",
+  "model_calls": 2,
+  "tool_calls": 1,
+  "usage": {
+   "input_tokens": 1315,
+   "cached_input_tokens": 0,
+   "output_tokens": 215,
+   "reasoning_tokens": 97,
+   "complete": true
+  },
+  "estimated_cost_usd": 0.000239,
+  "latency_ms": 3591,
+  "checks": {
+   "numbers_checked": 11,
+   "numbers_verified": 11,
+   "unverified_numbers": [],
+   "grounded": true,
+   "untrusted_text_flags": [
+    "instruction-like text in user data was neutralised"
+   ],
+   "exercises_mentioned": [],
+   "exercise_conflicts": []
+  },
+  "tools_used": [
+   "get_top_protein_foods"
+  ],
+  "created_at": "2026-10-26T07:02:34.475586",
+  "price_source": "MGT 409 class slide (professor-provided reference prices, USD per 1M tokens)",
+  "trace": [
+   {
+    "step": "router",
+    "method": "keywords",
+    "workflow": "nutrition"
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 375,
+    "cached_input_tokens": 0,
+    "output_tokens": 26,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000505,
+    "latency_ms": 741,
+    "tool_calls_requested": [
+     "get_top_protein_foods"
+    ]
+   },
+   {
+    "step": "tool_call",
+    "tool": "get_top_protein_foods",
+    "args": {
+     "days": 7,
+     "limit": 8
+    },
+    "ok": true,
+    "result_keys": [
+     "days",
+     "foods",
+     "note",
+     "total_protein_g"
+    ]
+   },
+   {
+    "step": "model_call",
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "input_tokens": 940,
+    "cached_input_tokens": 0,
+    "output_tokens": 189,
+    "reasoning_tokens": 97,
+    "estimated_cost_usd": 0.0001885,
+    "latency_ms": 2847,
+    "tool_calls_requested": []
+   },
+   {
+    "step": "validation",
+    "numbers_checked": 11,
+    "numbers_verified": 11,
+    "unverified_numbers": [],
+    "grounded": true,
+    "untrusted_text_flags": [
+     "instruction-like text in user data was neutralised"
+    ],
+    "exercises_mentioned": [],
+    "exercise_conflicts": []
+   }
+  ],
+  "model_calls_detail": [
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 375,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 26,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0000505,
+    "latency_ms": 741,
+    "created_at": "2026-10-26T07:02:34.481617"
+   },
+   {
+    "purpose": "agent:nutrition",
+    "status": "ok",
+    "served_model": "gpt-6-luna-global",
+    "usage_reported": true,
+    "input_tokens": 940,
+    "cached_input_tokens": 0,
+    "cache_write_tokens": 0,
+    "output_tokens": 189,
+    "reasoning_tokens": 97,
+    "estimated_cost_usd": 0.0001885,
+    "latency_ms": 2847,
+    "created_at": "2026-10-26T07:02:34.481621"
+   }
+  ]
+ }
+]

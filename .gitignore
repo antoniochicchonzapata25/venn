@@ -1,0 +1,32 @@
+# Secrets: never commit the real key (copy .env.example to .env instead)
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local database (recreate with: python scripts/seed.py)
+data/*.db
+data/*.db-*
+
+# Node / Vite
+node_modules/
+# frontend/dist is committed on purpose (evaluators need no Node.js)
+*.tsbuildinfo
+*.local
+
+# Logs, temp and tool files
+*.log
+*.tmp
+.claude/
+.vscode/
+.DS_Store
+Thumbs.db

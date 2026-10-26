@@ -1,0 +1,33 @@
+Fresh-clone rehearsal for Milestone 1.
+The repository index was exported with `git checkout-index` into an empty folder `submissions/venn/` (equivalent to a clone).
+The user-level PORTKEY_API_KEY environment variable was removed for both runs.
+
+== Fresh-clone rehearsal 2026-10-25T14:29:51Z | Python 3.14.7 | MINGW64_NT-10.0-26200
+== Run A: no PORTKEY_API_KEY anywhere (env var removed, no .env)
+
+venv + pip install: 101 s
+server answering after start: 5 s; total from clean folder: 106 s
+health: {"status":"ok","app":"Venn","version":"0.1.0","database":"ok","ai":{"configured":false,"model":"gpt-6-luna","provider":"portkey","message":"AI features are disabled: PORTKEY_API_KEY is not set."}}
+UI served: <title>Venn</title>
+demo login: {"id":1,"username":"demo","display_name":"Demo Athlete"}
+AI check (logged in): {"configured":false,"model":"gpt-6-luna","provider":"portkey","message":"AI features are disabled: PORTKEY_API_KEY is not set.","status":"disabled","cached":false}
+run.py banner:
+   
+   Venn is starting at http://127.0.0.1:8123
+     Demo login: demo / venn-demo-2026
+     .env files loaded: none
+     AI: disabled (no PORTKEY_API_KEY)
+     Press Ctrl+C to stop.
+   
+== Run B: key only in .env one folder ABOVE the repo (course grading layout)
+health: {"status":"ok","app":"Venn","version":"0.1.0","database":"ok","ai":{"configured":true,"model":"gpt-6-luna","provider":"portkey","message":null}}
+AI check (live gpt-6-luna call): {"configured":true,"model":"gpt-6-luna","provider":"portkey","message":null,"status":"ok","served_model":"gpt-6-luna-global","latency_ms":1399,"usage":{"input_tokens":11,"cached_input_tokens":0,"output_tokens":5,"reasoning_tokens":0},"cached":false}
+run.py banner:
+   
+   Venn is starting at http://127.0.0.1:8124
+     Demo login: demo / venn-demo-2026
+     .env files loaded: <tmp>\submissions\.env
+     AI: configured (gpt-6-luna)
+     Press Ctrl+C to stop.
+   
+(copied .env deleted after the test: yes)

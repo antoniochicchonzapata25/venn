@@ -1,0 +1,19 @@
+Fresh-clone rehearsal for Milestone 3 (2026-10-26, Windows 11, Python 3.14.7)
+
+Method:
+- The staged repository was exported with `git checkout-index` into an empty folder `submissions/venn/`.
+- PORTKEY_API_KEY was removed and no .env file was present, so AI is disabled.
+- Node.js was not used.
+
+Timing:
+- venv + pip install: 125 s
+- first `python run.py` (migrations 0001-0003, catalog load, demo seed): 10 s
+- total from an empty folder to a running app: 135 s
+
+Checks (API only, port 8126):
+- GET /api/health -> status ok, database ok, ai.configured false ("AI features are disabled: PORTKEY_API_KEY is not set.")
+  (The version string printed "0.2.0"; it was bumped to 0.3.0 after this run.)
+- POST /api/training/generate {} -> Upper Body, generator deterministic-v1, 64 min planned of a 75 min budget, 8 exercises
+- start -> log 1 set (10 reps x 135 lb) -> finish -> completed
+  summary: planned 64 min, actual 0 min (finished seconds after starting), difference -64, 1/24 sets, volume 612.3 kg (135 lb = 61.23 kg x 10)
+- GET /api/training/summary history -> [('Upper Body', demo=False, -64), ('Lower Body', demo=True, +13), ('Upper Body', demo=True, +24)]

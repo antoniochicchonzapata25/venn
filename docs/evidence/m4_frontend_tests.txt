@@ -1,0 +1,62 @@
+
+ RUN  v5.0.5 <repo>/frontend
+
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats targets for reps and timed exercises 4ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats rest 1ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > describes planned vs actual difference 1ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > converts kg to lb for display 1ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats elapsed time 1ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > prefills the next set from the last set, else the suggestion 2ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > shows an all-remaining bar when nothing is eaten 6ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > splits filled and remaining when partially complete 1ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > treats an exact (rounded) match as met 1ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > rescales the bar when over target: target part filled, excess marked over 1ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > reports missing targets instead of inventing one 0ms
+ ✓ src/test/nutritionLogic.test.ts > previewNutrition > matches the backend formula 1ms
+ ✓ src/test/nutritionLogic.test.ts > previewNutrition > returns null for invalid quantities 1ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > uses the local calendar, not UTC 1ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > shifts days across month boundaries 1ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > defaults a past day's entry to that day at the current clock time 1ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > labels today and yesterday 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > formats quantities for the log 1ms
+ ✓ src/test/questionnaire.test.tsx > protein range display > explains below, within and above the range 5ms
+ ✓ src/test/questionnaire.test.tsx > protein range display > shows the range next to the protein bar 175ms
+ ✓ src/test/questionnaire.test.tsx > protein range display > falls back to the plain bar when there is no target 8ms
+ ✓ src/test/questionnaire.test.tsx > protein reference weight and units > uses the target weight only when losing scale weight with a lower target 1ms
+ ✓ src/test/questionnaire.test.tsx > protein reference weight and units > shows the same multiplier per kg or per lb 1ms
+ ✓ src/test/questionnaire.test.tsx > durations and locations > stores the top of each range and labels custom durations 2ms
+ ✓ src/test/questionnaire.test.tsx > durations and locations > offers exactly six locations with sentence-case labels and preset equipment 2ms
+ ✓ src/test/units.test.tsx > unit conversions > converts height both ways 6ms
+ ✓ src/test/units.test.tsx > unit conversions > converts weight without drifting when switching repeatedly 4ms
+ ✓ src/test/units.test.tsx > goal and protein mapping > maps user-facing goals onto the existing calculator 2ms
+ ✓ src/test/units.test.tsx > goal and protein mapping > shows protein as grams per day 1ms
+ ✓ src/test/App.test.tsx > authentication > shows the Venn sign-in page when logged out, with the demo hint 364ms
+ ✓ src/test/Training.test.tsx > training > shows history with planned vs actual and marks demo data 527ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > shows the empty state with targets and nothing logged 338ms
+ ✓ src/test/Coach.test.tsx > AI Coach page > asks a question and shows a grounded answer with tools, tokens, cost and trace 705ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > lists entries chronologically with totals and remaining amounts 367ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > shows over-target amounts 65ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > explains a missing target instead of inventing one 89ms
+ ✓ src/test/Coach.test.tsx > AI Coach page > shows grounding and safety warnings instead of hiding them 480ms
+ ✓ src/test/Coach.test.tsx > AI Coach page > shows a clear unavailable state without an API key, and still shows calculated numbers 99ms
+ ✓ src/test/App.test.tsx > authentication > shows the server's error on a wrong password, then logs in 900ms
+ ✓ src/test/App.test.tsx > dashboard > shows targets and clearly marks AI as disabled without a key 99ms
+ ✓ src/test/Training.test.tsx > training > runs the whole lifecycle: generate, review, replace, start, log in lb, finish 887ms
+ ✓ src/test/Training.test.tsx > training > explains when a workout cannot be generated 122ms
+ ✓ src/test/App.test.tsx > dashboard > sends a new user to the setup questionnaire, which they can skip 236ms
+ ✓ src/test/App.test.tsx > dashboard > shows every module in the navigation 31ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > searches, picks a food, adjusts the quantity and saves it with a timestamp 1182ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > re-uses a recent food with its last quantity 154ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > flags an implausible quantity and applies the suggested correction 651ms
+ ✓ src/test/units.test.tsx > onboarding questionnaire > asks one question per screen and saves the answers to the profile 2955ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > offers search or manual entry for an unknown barcode 441ms
+ ✓ src/test/App.test.tsx > settings > switches units beside each field and saves metric values 2063ms
+ ✓ src/test/App.test.tsx > settings > maps clear goal choices onto the calculator and shows protein in grams 355ms
+ ✓ src/test/App.test.tsx > settings > shows server validation errors for profile fields 319ms
+ ✓ src/test/App.test.tsx > settings > rejects manual targets below the safety minimum with the server's reason 307ms
+
+ Test Files  8 passed (8)
+      Tests  53 passed (53)
+   Start at  03:03:36
+   Duration  9.07s (environment 48%, tests 32%, setup 11%, import 6%, transform 3%, worker 1%)
+

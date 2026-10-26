@@ -1,0 +1,17 @@
+
+ RUN  v5.0.5 <repo>/frontend
+
+ ✓ src/test/App.test.tsx > authentication > shows the Venn sign-in page when logged out, with the demo hint 156ms
+ ✓ src/test/App.test.tsx > authentication > shows the server's error on a wrong password, then logs in 865ms
+ ✓ src/test/App.test.tsx > dashboard > shows targets and clearly marks AI as disabled without a key 54ms
+ ✓ src/test/App.test.tsx > dashboard > prompts a new user to complete the profile 58ms
+ ✓ src/test/App.test.tsx > dashboard > shows every module in the navigation 17ms
+ ✓ src/test/App.test.tsx > settings > converts imperial entries to metric before saving 855ms
+ ✓ src/test/App.test.tsx > settings > shows server validation errors for profile fields 236ms
+ ✓ src/test/App.test.tsx > settings > rejects manual targets below the safety minimum with the server's reason 297ms
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  10:29:07
+   Duration  4.58s (tests 58%, environment 29%, setup 6%, import 4%, transform 2%)
+

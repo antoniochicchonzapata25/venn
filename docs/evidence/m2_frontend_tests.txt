@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 <repo>/frontend
+
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > shows an all-remaining bar when nothing is eaten 3ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > splits filled and remaining when partially complete 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > treats an exact (rounded) match as met 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > rescales the bar when over target: target part filled, excess marked over 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > reports missing targets instead of inventing one 0ms
+ ✓ src/test/nutritionLogic.test.ts > previewNutrition > matches the backend formula 0ms
+ ✓ src/test/nutritionLogic.test.ts > previewNutrition > returns null for invalid quantities 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > uses the local calendar, not UTC 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > shifts days across month boundaries 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > defaults a past day's entry to that day at the current clock time 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > labels today and yesterday 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > formats quantities for the log 1ms
+ ✓ src/test/App.test.tsx > authentication > shows the Venn sign-in page when logged out, with the demo hint 167ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > shows the empty state with targets and nothing logged 165ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > lists entries chronologically with totals and remaining amounts 157ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > shows over-target amounts 40ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > explains a missing target instead of inventing one 26ms
+ ✓ src/test/App.test.tsx > authentication > shows the server's error on a wrong password, then logs in 781ms
+ ✓ src/test/App.test.tsx > dashboard > shows targets and clearly marks AI as disabled without a key 57ms
+ ✓ src/test/App.test.tsx > dashboard > prompts a new user to complete the profile 66ms
+ ✓ src/test/App.test.tsx > dashboard > shows every module in the navigation 22ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > searches, picks a food, adjusts the quantity and saves it with a timestamp 1086ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > re-uses a recent food with its last quantity 130ms
+ ✓ src/test/App.test.tsx > settings > converts imperial entries to metric before saving 983ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > flags an implausible quantity and applies the suggested correction 707ms
+ ✓ src/test/App.test.tsx > settings > shows server validation errors for profile fields 266ms
+ ✓ src/test/App.test.tsx > settings > rejects manual targets below the safety minimum with the server's reason 333ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > offers search or manual entry for an unknown barcode 429ms
+
+ Test Files  3 passed (3)
+      Tests  28 passed (28)
+   Start at  12:14:59
+   Duration  4.75s (tests 52%, environment 33%, setup 8%, import 5%, transform 2%)
+

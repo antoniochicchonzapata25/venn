@@ -1,0 +1,30 @@
+Fresh-clone rehearsal for Milestone 2 (2026-10-25, Windows 11, Python 3.14.7)
+
+Method:
+- The staged repository (116 files) was exported with `git checkout-index` into an empty folder `submissions/venn/` (equivalent to a clone).
+- PORTKEY_API_KEY was removed from the environment, and no .env file was present, so AI is disabled.
+- Node.js was not used.
+
+Before the export:
+- no .db, .env or node_modules files were staged;
+- the real key value is not in any staged file (checked with `git grep --cached`).
+
+Timing:
+- python -m venv + pip install -r requirements.txt: 118 s
+- first `python run.py` (migrations + loading 7,813 foods + demo seed) until /api/health answered: 9 s
+- total from an empty folder to a running app: 127 s
+
+Checks against the running app (port 8125):
+- GET /api/health -> {"status":"ok","app":"Venn","version":"0.2.0","database":"ok","ai":{"configured":false,"model":"gpt-6-luna","provider":"portkey","message":"AI features are disabled: PORTKEY_API_KEY is not set."}}
+- POST /api/auth/login (demo) -> {"id":1,"username":"demo","display_name":"Demo Athlete"}
+- GET /api/foods/search?q=oats -> ['Cereals, oats, regular and quick, not fortified, dry', 'Cereals, oats, regular and quick, unenriched, cooked with water (includes boiling and microwaving), without salt']
+- GET /api/foods/barcode/044000065713 -> Oreo, serving: 2 cookies (36 g), 180.0 kcal
+- GET /api/nutrition/day?date=<today> -> 7 entries, 1044.4 kcal of a 2320 kcal target
+
+run.py banner:
+  Venn is starting at http://127.0.0.1:8125
+    Demo login: demo / venn-demo-2026
+    .env files loaded: none
+    AI: disabled (no PORTKEY_API_KEY)
+
+Upgrading an existing database: the local Milestone 1 database (schema 0001, with one ai_usage row) was upgraded in place to 0002 when the Milestone 2 server first started. The new column got its default value, and the existing account, profile, targets and limitations were kept.

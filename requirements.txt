@@ -1,0 +1,12 @@
+# Venn backend (Python 3.12+). Install: pip install -r requirements.txt
+fastapi==0.162.0             # HTTP API (backend/app/main.py)
+uvicorn==0.54.0              # ASGI server
+SQLAlchemy==2.1.6            # ORM over SQLite
+alembic==1.20.1              # schema migrations (backend/migrations)
+argon2-cffi==25.1.0          # password hashing
+python-dotenv==1.2.4         # loads PORTKEY_API_KEY from .env
+pydantic==2.14.1             # request/response schemas
+openai==3.37.0               # OpenAI client, used through the Portkey gateway
+pydantic-ai-slim[openai]==2.61.0  # agent framework (agents arrive in Phase 5)
+pytest==9.1.1                # backend tests (offline)
+httpx==0.28.1                # FastAPI TestClient

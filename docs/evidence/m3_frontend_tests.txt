@@ -1,0 +1,46 @@
+
+ RUN  v5.0.5 <repo>/frontend
+
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > shows an all-remaining bar when nothing is eaten 3ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > splits filled and remaining when partially complete 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > treats an exact (rounded) match as met 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > rescales the bar when over target: target part filled, excess marked over 0ms
+ ✓ src/test/nutritionLogic.test.ts > barSegments (progress bar visual states) > reports missing targets instead of inventing one 0ms
+ ✓ src/test/nutritionLogic.test.ts > previewNutrition > matches the backend formula 0ms
+ ✓ src/test/nutritionLogic.test.ts > previewNutrition > returns null for invalid quantities 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > uses the local calendar, not UTC 1ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > shifts days across month boundaries 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > defaults a past day's entry to that day at the current clock time 1ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > labels today and yesterday 0ms
+ ✓ src/test/nutritionLogic.test.ts > local dates and times > formats quantities for the log 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats targets for reps and timed exercises 2ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats rest 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > describes planned vs actual difference 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > converts kg to lb for display 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > formats elapsed time 0ms
+ ✓ src/test/trainingLogic.test.ts > training display logic > prefills the next set from the last set, else the suggestion 1ms
+ ✓ src/test/App.test.tsx > authentication > shows the Venn sign-in page when logged out, with the demo hint 216ms
+ ✓ src/test/Training.test.tsx > training > shows history with planned vs actual and marks demo data 298ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > shows the empty state with targets and nothing logged 180ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > lists entries chronologically with totals and remaining amounts 288ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > shows over-target amounts 51ms
+ ✓ src/test/Nutrition.test.tsx > nutrition dashboard > explains a missing target instead of inventing one 40ms
+ ✓ src/test/Training.test.tsx > training > runs the whole lifecycle: generate, review, replace, start, log in lb, finish 875ms
+ ✓ src/test/Training.test.tsx > training > explains when a workout cannot be generated 126ms
+ ✓ src/test/App.test.tsx > authentication > shows the server's error on a wrong password, then logs in 1005ms
+ ✓ src/test/App.test.tsx > dashboard > shows targets and clearly marks AI as disabled without a key 65ms
+ ✓ src/test/App.test.tsx > dashboard > prompts a new user to complete the profile 98ms
+ ✓ src/test/App.test.tsx > dashboard > shows every module in the navigation 21ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > searches, picks a food, adjusts the quantity and saves it with a timestamp 1313ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > re-uses a recent food with its last quantity 137ms
+ ✓ src/test/App.test.tsx > settings > converts imperial entries to metric before saving 988ms
+ ✓ src/test/App.test.tsx > settings > shows server validation errors for profile fields 271ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > flags an implausible quantity and applies the suggested correction 721ms
+ ✓ src/test/App.test.tsx > settings > rejects manual targets below the safety minimum with the server's reason 309ms
+ ✓ src/test/Nutrition.test.tsx > add food flow > offers search or manual entry for an unknown barcode 371ms
+
+ Test Files  5 passed (5)
+      Tests  37 passed (37)
+   Start at  23:35:51
+   Duration  5.99s (environment 46%, tests 37%, setup 9%, import 4%, transform 3%)
+
