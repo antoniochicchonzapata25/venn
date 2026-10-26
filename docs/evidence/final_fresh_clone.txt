@@ -1,0 +1,8 @@
+Fresh-clone rehearsal, 2026-10-26 (README steps only)
+Source: git clone https://github.com/antoniochicchonzapata25/venn.git (public, commit e046863), into an empty temp folder
+1. python -m venv .venv ; pip install -r requirements.txt   -> clone + install 121 s (Windows 11, Python from PATH)
+2. python run.py --port 8010                                -> /api/health 200 after ~4 s: {"status":"ok","app":"Venn","version":"0.4.0","database":"ok","ai":{"configured":true,"model":"gpt-6-luna",...}}
+   Note: the AI key came from a PORTKEY_API_KEY environment variable on this machine, not from a file in the clone.
+3. POST /api/auth/login demo / venn-demo-2026                -> 200 ; GET / -> 200 ; GET /api/coach/status -> enabled, 0/40 today
+4. cd backend ; python -m pytest                             -> 186 passed in 32.82s
+No Node.js step was needed (frontend/dist is committed). Server stopped by killing its process tree.
