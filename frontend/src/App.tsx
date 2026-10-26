@@ -4,7 +4,7 @@ import { api } from "./api";
 import AppShell from "./components/AppShell";
 import AuthPage from "./pages/AuthPage";
 import Coach from "./pages/Coach";
-import ComingSoon from "./pages/ComingSoon";
+import Body from "./pages/Body";
 import Dashboard from "./pages/Dashboard";
 import Nutrition from "./pages/Nutrition";
 import Onboarding from "./pages/Onboarding";
@@ -48,7 +48,7 @@ export default function App() {
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/training" element={<Training />} />
         <Route path="/training/workouts/:id" element={<WorkoutPage />} />
-        <Route path="/body" element={<ComingSoon module="body" />} />
+        <Route path="/body" element={<Body />} />
         <Route path="/coach" element={<Coach />} />
         <Route path="/welcome" element={<Onboarding />} />
         <Route path="/settings" element={<Settings user={user} onLogout={logout} />} />

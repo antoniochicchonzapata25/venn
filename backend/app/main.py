@@ -13,7 +13,7 @@ from app.branding import APP_NAME, APP_VERSION
 from app.config import FRONTEND_DIST, get_settings
 from app.db import make_engine, make_session_factory
 from app.migrations import upgrade_to_head
-from app.routers import auth, coach, health, nutrition, profile, training
+from app.routers import auth, body, coach, health, nutrition, profile, training
 from app.security import LoginThrottle
 from app.services.catalog import ensure_catalog
 
@@ -47,6 +47,7 @@ def create_app(database_url: str | None = None, run_migrations: bool = True, fro
     app.include_router(nutrition.router)
     app.include_router(training.router)
     app.include_router(coach.router)
+    app.include_router(body.router)
 
     index = frontend_dist / "index.html"
     if (frontend_dist / "assets").is_dir():

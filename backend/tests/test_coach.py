@@ -4,7 +4,7 @@ token/cost accounting, failures and AI-disabled behaviour. All offline, with a s
 from __future__ import annotations
 
 import json
-from datetime import date
+from datetime import date, timedelta
 
 import pytest
 from sqlalchemy import func, select
@@ -157,7 +157,7 @@ def test_missing_days_are_not_zero(app, client):
         assert all(not d["logged"] and "not the same as eating nothing" in d["note"] for d in rows["days"])
         m = get_progress_metrics(ctx, {"days": 7})
         assert m["nutrition"]["days_logged"] == 0 and m["nutrition"]["average_protein_g_on_logged_days"] is None
-        assert m["training"]["completed_workouts"] == 0 and m["body_measurements"] == "not tracked in Venn yet"
+        assert m["training"]["completed_workouts"] == 0 and m["body"]["weight_entries"] == 0 and m["body"]["measurements_cm"] == "none recorded"
 
 
 def test_progress_metrics_match_stored_records(demo, app):
@@ -323,3 +323,17 @@ def test_ai_disabled_keeps_everything_else_working(app, client):
     assert client.get("/api/coach/metrics").status_code == 200
     with app.state.session_factory() as db:
         assert db.scalar(select(func.count()).select_from(AgentRun)) == 0
+
+
+def test_progress_metrics_include_only_this_users_body_records(app, two_users):
+    alice, bob = two_users
+    alice.post("/api/body/weights", json={"entry_date": (TODAY - timedelta(days=7)).isoformat(), "weight": 70})
+    alice.post("/api/body/weights", json={"entry_date": TODAY.isoformat(), "weight": 69.5})
+    alice.post("/api/body/measurements", json={"entry_date": TODAY.isoformat(), "waist": 80})
+    bob.post("/api/body/weights", json={"entry_date": TODAY.isoformat(), "weight": 95})
+    with app.state.session_factory() as db:
+        ids = dict(db.execute(select(User.username, User.id)).all())
+        body = get_progress_metrics(AgentContext(db=db, user_id=ids["alice"], today=TODAY), {"days": 7})["body"]
+    assert body["weight_entries"] == 2 and body["latest_weight_kg"]["weight_kg"] == 69.5 and body["weight_change_kg"] == -0.5
+    assert body["measurements_cm"] == {"waist": {"latest_cm": 80.0, "latest_date": TODAY.isoformat()}}
+    assert "95" not in str(body) and "do not attribute" in body["note"]

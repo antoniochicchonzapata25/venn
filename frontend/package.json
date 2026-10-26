@@ -12,7 +12,8 @@
     "screenshots": "node scripts/screenshots.mjs",
     "screenshots:training": "node scripts/screenshots_training.mjs",
     "screenshots:profile": "node scripts/screenshots_profile.mjs",
-    "screenshots:coach": "node scripts/screenshots_coach.mjs"
+    "screenshots:coach": "node scripts/screenshots_coach.mjs",
+    "screenshots:body": "node scripts/screenshots_body.mjs"
   },
   "dependencies": {
     "@zxing/browser": "^0.2.1",

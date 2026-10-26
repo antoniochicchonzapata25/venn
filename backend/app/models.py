@@ -339,3 +339,49 @@ class AgentRun(Base):
     estimated_cost_usd: Mapped[float] = mapped_column(Float, default=0.0)
     latency_ms: Mapped[int] = mapped_column(Integer, default=0)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, index=True)
+
+
+# ---------------------------------------------------------------- Body (Milestone 5)
+
+class BodyWeight(Base):
+    """One self-recorded body weight per user per date. Stored in kg; shown in the user's unit."""
+
+    __tablename__ = "body_weight"
+    __table_args__ = (UniqueConstraint("user_id", "entry_date", name="uq_body_weight_user_date"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"), index=True)
+    entry_date: Mapped[Date] = mapped_column(SqlDate)
+    weight_kg: Mapped[float] = mapped_column(Float)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class BodyMeasurement(Base):
+    """Self-recorded circumferences for one date, in cm. Any field may be missing (not measured)."""
+
+    __tablename__ = "body_measurement"
+    __table_args__ = (UniqueConstraint("user_id", "entry_date", name="uq_body_measurement_user_date"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"), index=True)
+    entry_date: Mapped[Date] = mapped_column(SqlDate)
+    waist_cm: Mapped[float | None] = mapped_column(Float)
+    chest_cm: Mapped[float | None] = mapped_column(Float)
+    hips_cm: Mapped[float | None] = mapped_column(Float)
+    biceps_cm: Mapped[float | None] = mapped_column(Float)
+    thigh_cm: Mapped[float | None] = mapped_column(Float)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class SorenessRating(Base):
+    """User-reported soreness (0-10) for one muscle group; the latest rating replaces the previous one.
+    Kept separate from the workout-history recovery estimate."""
+
+    __tablename__ = "soreness_rating"
+    __table_args__ = (UniqueConstraint("user_id", "muscle_group", name="uq_soreness_user_group"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"), index=True)
+    muscle_group: Mapped[str] = mapped_column(String(16))
+    rating: Mapped[int] = mapped_column(Integer)
+    recorded_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

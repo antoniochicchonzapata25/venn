@@ -6,3 +6,12 @@ Source: git clone https://github.com/antoniochicchonzapata25/venn.git (public, c
 3. POST /api/auth/login demo / venn-demo-2026                -> 200 ; GET / -> 200 ; GET /api/coach/status -> enabled, 0/40 today
 4. cd backend ; python -m pytest                             -> 186 passed in 32.82s
 No Node.js step was needed (frontend/dist is committed). Server stopped by killing its process tree.
+
+Milestone 5 (Body) rehearsal, 2026-10-26, before committing
+Source: a copy of exactly the files Git would commit (git ls-files -co --exclude-standard), into an empty temp folder (no data/venn.db)
+1. python -m venv .venv ; pip install -r requirements.txt   -> 131 s
+2. python run.py --port 8010   -> migrations 0001-0007 applied; /api/health 200 after ~2 s, version 0.5.0
+3. demo login 200 ; GET /body 200 ; GET /api/body/weights -> empty (no invented body data) ;
+   GET /api/body/recovery -> has_history true from the two labelled demo workouts, counts low 6 / moderate 3 / high 0 / not assessed 1
+4. cd backend ; python -m pytest -> 226 passed in 46.00s
+Server stopped by killing its process tree. The GitHub clone itself must be re-checked after pushing.

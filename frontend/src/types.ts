@@ -383,3 +383,34 @@ export interface CoachMetrics {
   training: Record<string, number | null>;
   body_measurements: string;
 }
+
+// ---------------------------------------------------------------- Body (Milestone 5)
+export interface WeightEntry { id: number; entry_date: string; weight_kg: number }
+export interface WeightHistory {
+  entries: WeightEntry[]; latest: WeightEntry | null; previous: WeightEntry | null;
+  change_kg: number | null; days_between: number | null; note: string; replaced?: boolean;
+}
+export type MeasurementField = "waist" | "chest" | "hips" | "biceps" | "thigh";
+export type MeasurementEntry = { id: number; entry_date: string } & Record<`${MeasurementField}_cm`, number | null>;
+export interface MeasurementComparison {
+  latest_cm: number | null; latest_date: string | null; previous_cm: number | null; previous_date: string | null; change_cm: number | null;
+}
+export interface MeasurementHistory {
+  entries: MeasurementEntry[]; comparison: Record<MeasurementField, MeasurementComparison>; fields: MeasurementField[];
+  note: string; replaced?: boolean;
+}
+export type RecoveryState = "none" | "low" | "moderate" | "high";
+export type MuscleGroupId = "back" | "biceps" | "chest" | "shoulders" | "triceps" | "lower_back" | "abs" | "glutes" | "hamstrings" | "quadriceps";
+export interface RecoveryGroup {
+  id: MuscleGroupId; label: string; state: RecoveryState; state_label: string; residual: number; weighted_sets_7d: number;
+  last_workout: { id: number; name: string; finished_at: string; hours_ago: number; is_demo: boolean; local_date: string } | null;
+  exercises: { name: string; sets: number; role: "primary" | "secondary"; weighted_sets: number }[];
+}
+export interface Recovery {
+  has_history: boolean;
+  last_workout: { id: number; name: string; finished_at: string; is_demo: boolean; local_date: string; days_since: number; groups_trained: number } | null;
+  counts: Record<RecoveryState, number>;
+  groups: RecoveryGroup[];
+  model: { window_days: number; decay_hours: number; moderate_at: number; high_at: number; explanation: string; disclaimer: string; states: Record<RecoveryState, string> };
+  soreness: Partial<Record<MuscleGroupId, { rating: number; recorded_at: string }>>;
+}

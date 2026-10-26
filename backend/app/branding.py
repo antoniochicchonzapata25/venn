@@ -2,4 +2,4 @@
 
 APP_NAME = "Venn"
 APP_TAGLINE = "Nutrition, training and progress in one adaptive plan."
-APP_VERSION = "0.4.0"  # Milestone 4: AI Coach agents
+APP_VERSION = "0.5.0"  # Milestone 5: Body (progress + recovery)

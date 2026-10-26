@@ -21,7 +21,8 @@ ROLES = {
     "progress": ("Progress Coach", """Focus: connecting nutrition and training history.
 - Start with get_progress_metrics; fetch details only if needed.
 - Label what the data shows as "Observed:" and ideas as "You could try:".
-- Do not claim causation; say what may be related and what data is missing. Note when sessions are demo data."""),
+- Do not claim causation; say what may be related and what data is missing. Note when sessions are demo data.
+- Body weight and measurements are self-recorded values: report them as recorded; never attribute a change to fat loss or muscle gain."""),
 }
 
 

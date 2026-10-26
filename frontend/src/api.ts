@@ -1,6 +1,6 @@
 import type {
   AiCheck, Alternative, CoachMetrics, CoachRun, CoachStatus, ConfirmationNeeded, DaySummary, FoodDetail, FoodEntry, FoodSummary, Health, Limitation, Options,
-  Profile, ProfileInput, RecentFood, Target, TrainingOptions, TrainingSummary, User, WeekSummary, Workout, WorkoutBrief,
+  MeasurementHistory, MuscleGroupId, Profile, ProfileInput, RecentFood, Recovery, WeightHistory, Target, TrainingOptions, TrainingSummary, User, WeekSummary, Workout, WorkoutBrief,
 } from "./types";
 
 export class ApiError extends Error {
@@ -131,6 +131,18 @@ export const api = {
   markExercise: (id: number, weId: number, completed: boolean) =>
     request<Workout>("PATCH", `/api/training/workouts/${id}/exercises/${weId}`, { completed }),
   finishWorkout: (id: number) => request<Workout>("POST", `/api/training/workouts/${id}/finish`),
+
+  bodyWeights: () => request<WeightHistory>("GET", "/api/body/weights"),
+  addWeight: (b: { entry_date: string; weight: number; unit: "kg" | "lb" }) => request<WeightHistory>("POST", "/api/body/weights", b),
+  deleteWeight: (id: number) => request<void>("DELETE", `/api/body/weights/${id}`),
+  bodyMeasurements: () => request<MeasurementHistory>("GET", "/api/body/measurements"),
+  addMeasurement: (b: { entry_date: string; unit: "cm" | "in"; waist?: number; chest?: number; hips?: number; biceps?: number; thigh?: number }) =>
+    request<MeasurementHistory>("POST", "/api/body/measurements", b),
+  deleteMeasurement: (id: number) => request<void>("DELETE", `/api/body/measurements/${id}`),
+  recovery: () => request<Recovery>("GET", `/api/body/recovery?tz_offset=${new Date().getTimezoneOffset()}`),
+  setSoreness: (group: MuscleGroupId, rating: number) =>
+    request<{ muscle_group: string; rating: number; recorded_at: string }>("PUT", `/api/body/soreness/${group}`, { rating }),
+  deleteSoreness: (group: MuscleGroupId) => request<void>("DELETE", `/api/body/soreness/${group}`),
 
   coachStatus: () => request<CoachStatus>("GET", "/api/coach/status"),
   coachAsk: (question: string, workflow: string, localDate: string) =>

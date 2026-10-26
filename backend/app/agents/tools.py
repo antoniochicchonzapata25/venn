@@ -21,6 +21,7 @@ from sqlalchemy.orm import Session, selectinload
 
 from app.agents.safety import sanitize_untrusted
 from app.models import FoodEntry, Profile, TrainingLimitation, Workout, WorkoutExercise
+from app.routers.body import measurement_history, weight_history
 from app.routers.nutrition import target_for_day
 from app.routers.training import _context as training_context
 from app.routers.training import _history as training_history
@@ -282,6 +283,19 @@ def generate_workout_preview(ctx: AgentContext, args: dict) -> dict:
 
 # ---------------------------------------------------------------- progress tool
 
+def body_summary(ctx: AgentContext) -> dict:
+    """Recorded body weight and measurements (read-only, session user only). Values only: no body-fat estimate."""
+    w = weight_history(ctx.db, ctx.user_id)
+    m = measurement_history(ctx.db, ctx.user_id)
+    measurements = {f: {k: v for k, v in c.items() if v is not None} for f, c in m["comparison"].items() if c["latest_cm"] is not None}
+    return {
+        "weight_entries": len(w["entries"]),
+        "latest_weight_kg": w["latest"], "previous_weight_kg": w["previous"], "weight_change_kg": w["change_kg"],
+        "measurement_entries": len(m["entries"]), "measurements_cm": measurements or "none recorded",
+        "note": "Self-recorded values. Weight changes can reflect water and timing; do not attribute them to fat or muscle.",
+    }
+
+
 def get_progress_metrics(ctx: AgentContext, args: dict) -> dict:
     days = _int_arg(args, "days", 7, 28, 7)
     nut = get_daily_nutrition(ctx, {"days": min(days, 14)})
@@ -303,7 +317,7 @@ def get_progress_metrics(ctx: AgentContext, args: dict) -> dict:
             "planned_strength_days_per_week": p.days_per_week if p else None,
             "average_minutes_over_plan": round(sum(w["minutes_over_plan"] for w in workouts) / len(workouts), 1) if workouts else None,
         },
-        "body_measurements": "not tracked in Venn yet",
+        "body": body_summary(ctx),
         "note": "Deterministic metrics computed by Venn from stored records.",
     }
 
@@ -324,7 +338,7 @@ TOOLS: dict[str, Tool] = {t.name: t for t in [
     Tool("generate_workout_preview", "Run Venn's workout generator for the user (preview only, not saved).",
          {"day_type": {"type": ["string", "null"], "description": "full_body, upper, lower, push, pull or legs; null = next in plan."},
           "minutes": {"type": ["integer", "null"], "description": "Time available; null = the user's limit."}}, generate_workout_preview),
-    Tool("get_progress_metrics", "Combined deterministic nutrition and training metrics for the last N days (7-28).", {"days": _DAYS}, get_progress_metrics),
+    Tool("get_progress_metrics", "Combined deterministic nutrition and training metrics for the last N days (7-28), plus recorded body weight and measurements.", {"days": _DAYS}, get_progress_metrics),
 ]}
 
 AGENT_TOOLS: dict[str, tuple[str, ...]] = {

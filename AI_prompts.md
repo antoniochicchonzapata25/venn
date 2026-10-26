@@ -246,3 +246,27 @@ Summary of the instructions. Milestone 4 is the functional baseline; no new feat
 - wrote `deliverables/build.py`, which generates both HTML files from the evidence files (numbers are computed, not typed) and inlines screenshots and reveal.js;
 - corrected the docs: cache-write tokens had been reported, and the six-question totals now cover runs 1–6 with run 7 separate.
 
+
+## Prompt 9: Body dashboard, Progress and Recovery (2026-10-26)
+
+Summary of the instructions. Deadline day: prioritise a functional, reliable feature over complexity, and reuse existing patterns without destabilising working code.
+
+1. **Body section:** a segmented Progress / Recovery toggle; responsive, accessible and in Venn's design language.
+2. **Progress:** dated body weight (latest, previous, difference, chart or list, kg/lb); waist, chest and hips measurements (biceps and thighs if easy) with comparison and deletion; validation of units, dates and implausible values; no body-fat inference and no fat-vs-muscle claims.
+3. **Recovery:**
+   - **Map:** front and back views with ten clickable muscle groups, coloured from real workout data, with a legend (grey not assessed; light, medium and dark red for low, moderate and high estimated fatigue).
+   - **Indicators:** last-workout indicators and fatigue counts.
+   - **Model:** deterministic, from logged workouts and existing mappings, with an insufficient-data state; thresholds documented as illustrative; primary vs. secondary muscles weighted.
+   - **Detail panel:** per-group detail.
+   - **Soreness:** an optional user-reported 0–10 rating, kept separate.
+4. **Security and tests:** user-scoped everything, cross-user denial, and tests for CRUD, validation, units, empty states, comparisons, recovery boundaries, mapping, no history and soreness.
+5. **AI Coach (optional):** narrowly scoped, read-only body access with no extra model calls; gpt-6-luna only.
+6. **Deliverables and audit:** update the report, slides and README honestly, within 10–15 pages and 10 slides. Do not commit or push without authorisation.
+
+**How AI helped:** Claude Code:
+- **Backend:** added the `body_weight`, `body_measurement` and `soreness_rating` tables (migration 0007), the `/api/body/*` endpoints and `services/recovery.py`. The recovery service uses free-exercise-db primary muscles at 1.0 and secondary at 0.5, a 72-hour linear fade over a 7-day window, and fixed illustrative thresholds.
+- **Frontend:** built the Body page with the toggle, the Progress view (weight chart, measurement comparison), the Recovery view (inline SVG front and back figures, legend, indicators, detail panel, soreness) and a body summary inside `get_progress_metrics`.
+- **Tests:** wrote 40 backend and 6 frontend tests.
+- **Deliverables:** regenerated the report and slides.
+
+Details: `docs/milestone5.md`. Nothing was committed or pushed.

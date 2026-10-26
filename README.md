@@ -4,7 +4,7 @@
 
 MGT 409 *AI Foundations for Managers*: final project. The submitted report and slides are in [`deliverables/`](deliverables/) (`report.html`, `slides.html`; self-contained, open in any browser).
 
-> **Status: Milestone 4 (AI Coach agents, on top of nutrition, training and the profile questionnaire).**
+> **Status: Milestone 5 (Body: progress tracking and a recovery map, on top of nutrition, training, the questionnaire and the AI Coach).**
 >
 > **Working now:**
 > - accounts, with each user's data kept private, and a short first-run questionnaire;
@@ -17,7 +17,7 @@ MGT 409 *AI Foundations for Managers*: final project. The submitted report and s
 >
 > - **AI Coach:** a router plus a Nutrition Agent, Training Agent and Progress Coach (`gpt-6-luna`). They use read-only tools on your real records, with answer checks, run traces and token and cost tracking.
 >
-> **Not built yet (shown as "coming soon"):** body tracking.
+> - **Body:** record weight and waist, chest, hips, biceps and thigh measurements (with comparisons and a chart), plus a front/back muscle-recovery map estimated from your logged workouts, with an optional self-reported soreness rating. No AI calls.
 
 ---
 
@@ -115,6 +115,14 @@ No AI model is called for search, barcode lookup, logging or any nutrition calcu
 
 No AI model is called for training. The generator is deterministic and works without an API key.
 
+### Try the Body page
+
+1. Open **Body**. Use the **Progress / Recovery** toggle at the top right.
+2. **Progress:** pick a date and enter your weight (shown in your kg/lb setting), then press **Save weight**. With two or more entries you see the difference and a chart. Add any of waist, chest, hips, biceps or thigh (cm or in, following your height setting) and compare the latest entry with an earlier one. Implausible values (e.g. 12 kg) are rejected with a message. Saving again for the same date replaces that day's entry.
+3. **Recovery:** each of the ten muscle groups is coloured from your **logged** sets in completed workouts. Grey means not assessed (no logged sets in 7 days). Light, medium and dark red mean low, moderate and high estimated residual fatigue. Click a region to see the workout, exercises and sets behind it, and optionally record your own 0–10 soreness. That rating is kept separate from the estimate.
+
+The recovery thresholds are illustrative heuristics, not medical rules: see [docs/milestone5.md](docs/milestone5.md).
+
 ### Try the AI Coach (needs PORTKEY_API_KEY)
 
 1. Open **Coach**. Pick an example question (for example "How am I doing against my protein goal?") or type your own, then press **Ask**.
@@ -170,6 +178,7 @@ npm run screenshots           # with the app running: nutrition screenshots to d
 npm run screenshots:training  # with the app running: performs a short real workout and captures the training screens
 npm run screenshots:profile   # with the app running: Home, Settings (unit switches), Training, onboarding
 npm run screenshots:coach     # with the app running AND an API key: asks live Coach questions (uses tokens)
+npm run screenshots:body      # with the app running: Body Progress and Recovery views (read-only)
 ```
 
 ---
@@ -272,7 +281,7 @@ See [docs/milestone1.md](docs/milestone1.md), [docs/milestone2.md](docs/mileston
 
 - **Activity factor:** the calorie calculator still uses the standard activity multipliers, which conventionally include exercise, even though the question now asks about activity outside workouts. This was not recalibrated (see milestone3_5.md). Target weight and date are informational; the chosen pace sets the calories.
 
-- **Not built yet:** body tracking.
+- **Body / recovery:** the recovery map is a simple heuristic from logged sets (primary muscle 1.0, secondary 0.5, 72-hour linear fade, fixed thresholds). It ignores load, effort, sleep and individual differences, and it does not measure soreness, injury or readiness. Logging a body weight does not change the weight used for your targets; update it in Settings.
 - **AI Coach:** grounding checks values, not meaning; the injection filter is pattern-based, but permissions, user binding and read-only access are enforced in code (see milestone4.md).
 - **Training:** the duration constants are reasoned defaults, not calibrated. The exercise "loads" tags are a conservative filter, not medical guidance. Progression is simple (same weight, or a small increase after hitting the top of the rep range).
 - **Barcodes:** only the 20 bundled products are recognised; there is no online product database. Camera scanning uses the browser camera and is not yet verified on a physical phone. Typed lookup and decoding from a photo are verified.
